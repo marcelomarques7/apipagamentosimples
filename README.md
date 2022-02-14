@@ -1,5 +1,8 @@
 # Api Pagamento Simples
 
+Api para pagamentos simples entre usuários comuns e logistas, logista não transferem valor, apenas recebem.<br>
+Foco no fluxo de transferencias, não tem autenticação.<br>
+Transação consistente, caso algo dê errado o valor volta para a conta do cliente pagador e a transação é cancelada.<br>
 ## Documentação
 
 ### Endpoints
