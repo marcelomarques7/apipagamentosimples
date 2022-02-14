@@ -51,7 +51,7 @@ class TransferenciaController extends Controller
         $autorizacao = new Client();
         $resAutorizacao = $autorizacao->request('GET', 'https://run.mocky.io/v3/8fafdd68-a090-496f-8c9a-3442cf30dae6');
         if ($resAutorizacao->getStatusCode() == 200) { // 200 OK
-            $resAutorizacaoMessage = $resAutorizacao->getBody()->getContents();
+            $resAutorizacaoMessage = json_decode($resAutorizacao->getBody()->getContents());
             //dd($resAutorizacaoMessage);
             $array['autorization'] = $resAutorizacaoMessage;
             $newTransferencia = new Transferencia();
@@ -81,7 +81,7 @@ class TransferenciaController extends Controller
             // Notificação
             $notificacao = new Client();
             $resNotify = $notificacao->request('GET', 'http://o4d9z.mocklab.io/notify');
-            $resNotifyMessage = $resNotify->getBody()->getContents();
+            $resNotifyMessage = json_decode($resNotify->getBody()->getContents());
             //dd($resNotifyMessage);
 
             $array['success'] = 'Transação concluída com sucesso!';
